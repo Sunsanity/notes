@@ -62,3 +62,10 @@ var FooFunction = function Foo(){
   3.函数通过call或者apply调用时，this取值是传入的对象的值。
   4.在全局环境下和普通函数调用时，this取值都是window，普通函数中的this取值永远都是window。
   
+8.作用域：
+  JS中没有块状作用域，即
+  if(){var a = 10};
+  console.log(a); //10或
+  for(var i=0;i<10;i++){}
+  console.log(i); //10
+  所以不要在块内声明变量，这样就和JAVA保持一致，不会产生歧义。
