@@ -15,3 +15,17 @@
 这个原型的用处还是体现在对象的创建上，因为对象的创建会调用一个函数，所以这个对象就应该可以调用这个函数中的prototype中的任何属性,因为每个对象都有一个
 __proto__属性，fn.__proto__ === Fn.prototype，所以对象是可以调用函数中的任何属性的。这样也就让这个对象不仅仅有了属性，同时也有了一些自己的方法。
 这个__proto__叫做对象的隐式原型。
+
+4.js中的继承和java不同，java中的继承是子类继承父类，而js中的继承是所有的对象(除了Object)的__proto__都指向了Object.prototype,所以所有对象都可以
+调用Object.prototype中的方法，其中就包括hasOwnProperty方法。另外所有的函数也是一样，__proto__都指向了Function.prototype，所以所有函数也都可以
+调用Function.prototype的方法和属性。js中的继承就是通过这种原型链来体现的。
+var f1 = new Foo();
+f1.a = 10;
+Foo.prototype.a = 100;
+Foo.prototype.a = 200;
+console.log(f1.a) //10
+console.log(f1.b) //200
+f1.hasOwnProperty(a)  //true
+f1.hasOwnProperty(b)  //false
+其中b这个属性其实是通过原型链向外查找找到的，而a是这个对象的基本属性，那么就可以通过f1.hasOwnProperty(a)这个方法判断a是f1的基本属性还是通过原型链
+找到的属性。JS中一个对象如果有一个基本属性和通过原型找到的属性一样，JS会先查找基本属性，没有找到的话才会沿着原型链找这个属性。
