@@ -47,3 +47,7 @@ function Foo(){
 console.log(FooFunction); undefined
 var FooFunction = function Foo(){
 }
+
+6.函数代码段中的执行上下文环境：
+  函数代码段在执行以前浏览器会将函数中的arguments变量和参数进行赋值，每次调用函数都会产生一个新的上下文环境，这是因为每次执行函数的参数可能都不一样。
+  函数代码段执行以前还会将自由变量的取值作用域赋值。
