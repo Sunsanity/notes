@@ -29,3 +29,17 @@ f1.hasOwnProperty(a)  //true
 f1.hasOwnProperty(b)  //false
 其中b这个属性其实是通过原型链向外查找找到的，而a是这个对象的基本属性，那么就可以通过f1.hasOwnProperty(a)这个方法判断a是f1的基本属性还是通过原型链
 找到的属性。JS中一个对象如果有一个基本属性和通过原型找到的属性一样，JS会先查找基本属性，没有找到的话才会沿着原型链找这个属性。
+
+5.浏览器在执行JS中的代码以前会做一些准备工作：1.变量和函数表达式的声明（不会赋值,函数表达式会被当做赋值操作对待）  2.this的赋值 3.函数的赋值
+console.log(a); //a is not defined
+
+console.log(a); //undefined 对a进行声明，但是未赋值
+var a = 1;
+
+console.log(Foo); //function Foo();
+function Foo(){
+}
+
+console.log(FooFunction); undefined
+var FooFunction = function Foo(){
+}
