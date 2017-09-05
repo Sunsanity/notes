@@ -85,3 +85,21 @@ var FooFunction = function Foo(){
   这个自由变量的声明是在外层函数中声明的，即内层函数需要外层函数的上下文环境。所以调用完外层函数正常情况下所产生的的上下文环境应该被销毁的，但是
   由于返回的函数需要引用到外层函数的声明的变量，所以这个上下文环境此时不能被销毁，而是处于非活动状态。所以闭包的使用是会增加内容开销的。
   2.函数作为参数传递：
+  闭包实际应用中的作用：封装变量，收殓权限
+  function isFirstLoad(){
+    var _list = []
+    return function(id){
+      if(_list.indexOf(id)>=0){
+        return false
+      }else{
+        _list.push(id);
+        return true
+      }
+    }
+  }
+  var firstLoad = isFirstLoad();
+  firstLoad(10) //true
+  firstLoad(10) //false
+  firstLoad(20) //true
+  firstLoad(20) //false
+  这个例子就可以利用闭包限制访问的次数，如果同一参数第一次调用就返回true,非第一次同一参数调用就返回false。
