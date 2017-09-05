@@ -59,7 +59,7 @@ var FooFunction = function Foo(){
     构造函数prototype对象方法中的this取值就是调用这个方法的对象，即当前对象。
   2.函数作为一个对象的属性，如果直接调用这个对象的属性this取值是这个对象;如果的这个对象的方法的属性赋值给另外一个变量，通过这个新变量调用方法时
   this取值是window。
-  3.函数通过call或者apply调用时，this取值是传入的对象的值。
+  3.函数通过call或者apply调用时，this取值是传入的对象的值(第一个参数)。
   4.在全局环境下和普通函数调用时，this取值都是window，普通函数中的this取值永远都是window。
   
 8.作用域：
