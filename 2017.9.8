@@ -1,0 +1,14 @@
+mybatis,hibernate,spring data jpa三者的比较
+
+1.spring data jpa其实是对于jpa规范的再次封装，底层使用的还是hibernate实现功能，所以只需要比较hibernate和mybatis
+
+2.性能角度考虑：因为hibernate的封装程度更高，所以执行sql的效率会略微低一点，但是hibernate可以设置缓存，对于大量的重复查询有一点的优化作用;而mybatis
+的sql书写更加自由，可以自由应对复杂sql的操作，发挥工作人员的sql能力。
+
+3.开发效率：hibernate更高一些
+
+4.ORM角度：hibernate是完备的ORM映射框架，是符合JPA规范的，mybatis不符合jpa规范，mybatis比jdbc写sql要方便一些，但是最终还是需要手写sql，
+而且无法做到数据库的切换，而hibernate可以让开发人员无需考虑数据库的切换。hibernate的难点作用表与表之间的关联关系，正常关系型数据库的表关联是通过
+外键关联的，但是hibernate中需要设置对象之间的关联关系。
+
+5.与spring的集成：spring和spring boot是始终支持hibernate的集成的，但是官方并没有提供对于mybatis的集成，但也不代表mybatis无法集成spring和spring boot。
